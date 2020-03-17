@@ -9,19 +9,21 @@ from nltk.corpus import stopwords
 stopset = stopwords.words("german")
 
 # Weist einer Variable die .txt-Datei zu, kodiert diesen Datei in UTF-8
-# und liest sie  
+# und liest sie
+# encoding='utf-8' wird manchmal nicht benötigt; bei Fehlerausgabe löschen
+# und bei Bedarf wieder einfügen
 file = open("Dateipfad\\.txt-Datei", encoding='utf-8').read()
 
 # Nutzung der wordcloud-Bibliothek; Parameter im Konstruktor dienen zum Einen, die Auflösung
 # des gesamten Bildes bzw. der Wörter im Bild scharf darzustellen (width/height), und zum Anderen, um die vorher
 # zugewiesenen deutschen Stoppwörter einzupflegen
 # Anschließend wird die 'file' Variable generiert
-word_cloud = WordCloud(width=1300, height=800, stopwords=stopset).generate(file)
+word_cloud = WordCloud(width=2000, height=1000, stopwords=stopset).generate(file)
 
 # Nutzung der matplotlib-Bibliothek;
 # figure() erzeugt das dargestellte Bild; Parameterfunktion figsize() erzeugt Höhe und Breite des Körpers
-# facecolor gibt die Hintergrundsfarbe des Bildes an, hier Schwarz
-plt.figure(figsize=(15, 10), facecolor='k')
+# facecolor gibt die Hintergrundsfarbe des Bildes an, hier weiß
+plt.figure(figsize=(20, 10), facecolor='white')
 
 # imshow() stellt die zugewiesenen Werte in word_cloud als Bild dar
 plt.imshow(word_cloud)
